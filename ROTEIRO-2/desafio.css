@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
   line-height: 1.6;
   background-color: #f8f8f8;
   padding-top: 150px;
@@ -20,7 +20,6 @@ body {
 }
 
 header {
-  background-color: #333;
   color: #fff;
   padding: 10px 0;
   position: fixed;
@@ -28,10 +27,12 @@ header {
   width: 100%;
   top: 0;
   z-index: 1000;
+  backdrop-filter: blur(6px);
+  background-color: rgba(255, 192, 203, 0.2);
   background-image: linear-gradient(
       to right,
-      rgba(0, 0, 0, 0.418),
-      hsla(347, 78%, 87%, 0.6)
+      rgba(255, 222, 240, 0.3),
+      rgba(255, 182, 193, 0.4)
     ),
     url("header-bg.jpg");
   background-size: cover;
@@ -40,6 +41,7 @@ header {
 
 header h1 {
   font-size: 24px; /* Redução o tamanho da fonte para se adequar a telas menores */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 nav ul {
@@ -56,10 +58,6 @@ nav ul li {
   margin-right: 20px;
 }
 
-nav ul li:last-child {
-  margin-right: 0;
-}
-
 nav ul li a {
   text-decoration: none;
   color: #fff;
@@ -74,7 +72,8 @@ nav ul li a i {
 }
 
 nav ul li a:hover {
-  background-color: rgba(255, 182, 193, 0.637);
+  color: #ffeef5;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .section {
@@ -89,12 +88,14 @@ nav ul li a:hover {
 .section h2 {
   font-size: 28px;
   margin-bottom: 20px;
+  color: #d29ab1;
 }
 
 .cardapio-item {
   margin-bottom: 20px;
   padding: 15px;
-  border-radius: 5px;
+  border-radius: 12px;
+  border-left: 4px solid #ffb0d5;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
@@ -108,7 +109,8 @@ mouse sobre ele */
 .cardapio-item h3 {
   font-size: 20px;
   color: #555;
-  font-family: ‘Roboto’, Arial, sans-serif;
+  color: #9b6b83;
+  font-family: "Poppins", sans-serif;
 }
 
 footer {
@@ -119,12 +121,15 @@ footer {
   position: relative;
   bottom: 0;
   width: 100%;
+  backdrop-filter: blur(6px);
+  background-color: rgba(255, 192, 203, 0.2);
   background-image: linear-gradient(
       to right,
-      rgba(0, 0, 0, 0.418),
-      hsla(347, 78%, 87%, 0.6)
+      rgba(255, 222, 240, 0.3),
+      rgba(255, 182, 193, 0.4)
     ),
     url("footer-bg.jpg");
   background-size: cover;
   background-position: center;
+  font-size: 14px;
 }
