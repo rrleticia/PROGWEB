@@ -73,7 +73,7 @@ img {
   display: block;
   text-decoration: none;
   font-weight: bold;
-  color: #343434;
+  color: #221fdc;
   margin-bottom: 20px;
   font-size: 18px;
 }
@@ -192,4 +192,19 @@ img {
   font-size: 18px;
   margin-left: 15px;
   border-left: 1px solid #000;
+}
+
+.lista-tematicas-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.lista-tematicas__item-flex {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
