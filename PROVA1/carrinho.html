@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrinho de Compras</title>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/styleCarrinho.css" />
+  </head>
+  <body>
+    <script src="scripts/script.js"></script>
+
+    <header class="header">
+      <h1 class="header__titulo">Prova da Loja de Informática</h1>
+      <nav>
+        <a class="header__navegacao" href="index.html">Home</a>
+        <a class="header__navegacao" href="index.html">Produtos</a>
+        <a class="header__navegacao" href="#">Contato</a>
+      </nav>
+      <div class="carrinho">
+        <span class="carrinho__total">0</span>
+        <img
+          class="carrinho__imagem"
+          src="img/cart-icon.png"
+          alt="Carrinho de Compras"
+        />
+      </div>
+    </header>
+    <main class="ajuste-footer">
+      <section class="carrinho__itens">
+        <h2>Seu Carrinho</h2>
+        <div id="carrinho__container">
+          <!-- Itens do carrinho serão exibidos aqui -->
+        </div>
+        <div class="carrinho__total">
+          <h3>Total: <span id="carrinho-total">0,00</span></h3>
+        </div>
+        <button class="button-limpar" onclick="limpaCarrinho()">
+          Limpar Carrinho
+        </button>
+      </section>
+
+      <form class="formulario">
+        <label class="formulario__subtitulo" for="fnome"
+          >Nome do Titular:</label
+        >
+        <br />
+        <input
+          class="formulario__inserir"
+          type="text"
+          id="fnome"
+          name="fnome"
+          value="Leticia"
+        /><br />
+        <label class="formulario__subtitulo" for="fbandeira"
+          >Bandeira do Cartão:</label
+        >
+        <br />
+        <input
+          class="formulario__inserir"
+          type="text"
+          id="fbandeira"
+          name="fbandeira"
+          value="Visa"
+        /><br />
+        <label class="formulario__subtitulo" for="fnumero"
+          >Número do Cartão:</label
+        >
+        <br />
+        <input
+          class="formulario__inserir"
+          type="text"
+          id="fnumero"
+          name="fnumero"
+          value="123456789"
+        /><br />
+        <label class="formulario__subtitulo" for="fdata"
+          >Data de Validade do Cartão:</label
+        >
+        <br />
+        <input
+          class="formulario__inserir"
+          type="text"
+          id="fdata"
+          name="fdata"
+          value="09/28"
+        /><br />
+        <label class="formulario__subtitulo" for="fdigito"
+          >Digito Identificador do Cartão:</label
+        ><br />
+        <input
+          class="formulario__inserir"
+          type="password"
+          id="fdigito"
+          name="fdigito"
+          value="4345"
+        /><br />
+        <br />
+
+        <input class="formulario__btn type="submit" value="Salvar" />
+      </form>
+    </main>
+
+    <footer class="footer">
+      <p>
+        &copy; 2024 Minha Loja de Informática - Todos os direitos reservados
+      </p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

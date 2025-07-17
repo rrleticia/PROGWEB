@@ -1,0 +1,129 @@
+.body {
+  font: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.header__titulo {
+  margin: 0;
+}
+
+.header__navegacao {
+  color: white;
+  margin: 0 1rem;
+  text-decoration: none;
+}
+
+.carrinho {
+  position: relative;
+  cursor: pointer;
+}
+
+.carrinho__imagem {
+  width: 30px;
+  height: 30px;
+}
+
+.carrinho--contagem {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 5px 10px;
+}
+
+.layout-produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.layout-produtos__produto-info {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.layout-produtos__produto-imagem {
+  height: auto;
+  max-height: 120px;
+  object-fit: contain;
+}
+
+.layout-produtos__produto-titulo {
+  margin: 0.5rem 0;
+}
+
+.layout-produtos__produto-valor {
+  margin: 0.5rem 0;
+}
+
+.layout-produtos__produto-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.layout-produtos__produto-btn:hover {
+  background-color: #0056b3;
+}
+
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.promocao {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.promocao__coluna {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.promocao__icone {
+  background-color: red;
+  border-radius: 100%;
+  color: white;
+  padding: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.promocao__titulo {
+  color: red;
+}
+
+.promocao__info {
+  color: gold;
+  margin: 0;
+  padding: 0;
+}

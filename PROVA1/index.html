@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prova da Loja de Informática</title>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body class="body">
+    <script src="scripts/script.js"></script>
+
+    <header class="header">
+      <h1 class="header__titulo">Prova da Loja de Informática</h1>
+      <nav>
+        <a class="header__navegacao" href="#">Home</a>
+        <a class="header__navegacao" href="#">Produtos</a>
+        <a class="header__navegacao" href="#">Contato</a>
+      </nav>
+      <div class="carrinho">
+        <a href="carrinho.html">
+          <span class="carrinho--contagem">0</span>
+          <img
+            class="carrinho__imagem"
+            src="img/cart-icon.png"
+            alt="Carrinho de Compras"
+          />
+        </a>
+      </div>
+    </header>
+    <main>
+      <section class="layout-produtos">
+        <article class="layout-produtos__produto-info">
+          <img
+            class="layout-produtos__produto-imagem"
+            src="img/notebook.jpg"
+            alt="Notebook"
+          />
+          <section class="promocao">
+            <div class="promocao__coluna">
+              <i class="promocao__icone fas fa-solid fa-bullhorn"></i>
+              <h3 class="promocao__titulo">PROMOÇÃO!</h3>
+            </div>
+            <h3 class="promocao__info">43% OFF</h3>
+          </section>
+          <h2 class="layout-produtos__produto-titulo">Notebook</h2>
+          <p class="layout-produtos__produto-valor">R$ 3.500,00</p>
+          <button
+            class="layout-produtos__produto-btn"
+            onclick="adicionaAoCarrinho('Notebook', 3500)"
+          >
+            Adicionar ao Carrinho
+          </button>
+        </article>
+        <article class="layout-produtos__produto-info">
+          <img
+            class="layout-produtos__produto-imagem"
+            src="img/mouse.jpg"
+            alt="Mouse"
+          />
+          <h2 class="layout-produtos__produto-titulo">Mouse</h2>
+          <p class="layout-produtos__produto-valor">R$ 50,00</p>
+          <button
+            class="layout-produtos__produto-btn"
+            onclick="adicionaAoCarrinho('Mouse', 50)"
+          >
+            Adicionar ao Carrinho
+          </button>
+        </article>
+        <article class="layout-produtos__produto-info">
+          <img
+            class="layout-produtos__produto-imagem"
+            src="img/teclado.jpg"
+            alt="Teclado"
+          />
+          <h2 class="layout-produtos__produto-titulo">Teclado</h2>
+          <p class="layout-produtos__produto-valor">R$ 150,00</p>
+          <button
+            class="layout-produtos__produto-btn"
+            onclick="adicionaAoCarrinho('Teclado', 150)"
+          >
+            Adicionar ao Carrinho
+          </button>
+        </article>
+        <article class="layout-produtos__produto-info">
+          <img
+            class="layout-produtos__produto-imagem"
+            src="img/leitorBiometrico.jpg"
+            alt="LeitorBiometrico"
+          />
+          <h2 class="layout-produtos__produto-titulo">Leitor Biométrico</h2>
+          <p class="layout-produtos__produto-valor">R$ 350,00</p>
+          <button
+            class="layout-produtos__produto-btn"
+            onclick="adicionaAoCarrinho('LeitorBiometrico', 350)"
+          >
+            Adicionar ao Carrinho
+          </button>
+        </article>
+        <article class="layout-produtos__produto-info">
+          <img
+            class="layout-produtos__produto-imagem"
+            src="img/passadorSlide.jpg"
+            alt="PassadorSlide"
+          />
+          <h2 class="layout-produtos__produto-titulo">Passador Slide</h2>
+          <p class="layout-produtos__produto-valor">R$ 350,00</p>
+          <button
+            class="layout-produtos__produto-btn"
+            onclick="adicionaAoCarrinho('PassadorSlide', 350)"
+          >
+            Adicionar ao Carrinho
+          </button>
+        </article>
+        <article class="layout-produtos__produto-info">
+          <img
+            class="layout-produtos__produto-imagem"
+            src="img/tablet.jpg"
+            alt="Tablet"
+          />
+          <section class="promocao">
+            <div class="promocao__coluna">
+              <i class="promocao__icone fas fa-solid fa-bullhorn"></i>
+              <h3 class="promocao__titulo">PROMOÇÃO!</h3>
+            </div>
+            <h3 class="promocao__info">27% OFF</h3>
+          </section>
+          <h2 class="layout-produtos__produto-titulo">Tablet</h2>
+          <p class="layout-produtos__produto-valor">R$ 2.350,00</p>
+          <button
+            class="layout-produtos__produto-btn"
+            onclick="adicionaAoCarrinho('Tablet', 2350)"
+          >
+            Adicionar ao Carrinho
+          </button>
+        </article>
+        <!-- Adicione mais produtos conforme necessário -->
+      </section>
+    </main>
+    <footer class="footer">
+      <p>
+        &copy; 2024 Minha Loja de Informática - Todos os direitos reservados
+      </p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
