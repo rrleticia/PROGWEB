@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exercício 09</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      function infomacoesAritmetica() {
+        var numeros = document.getElementById("txtNumeros").value;
+        numeros = numeros.split(",");
+        numeros = numeros.map((num) => parseInt(num));
+        soma = 0;
+        media = 0;
+        positivos = 0;
+        negativos = 0;
+        for (var num of numeros) {
+          soma += num;
+          if (num < 0) {
+            negativos += 1;
+          } else {
+            positivos += 1;
+          }
+        }
+
+        media = soma / (positivos + negativos);
+        percetPositivos = positivos / (positivos + negativos);
+        percetNegativos = negativos / (positivos + negativos);
+
+        document.write("A média da lista é " + media + "<br>");
+        document.write(
+          "A quantidade de números positivos da lista é " + positivos + "<br>"
+        );
+        document.write(
+          "A porcentagem de números positivos da lista é " +
+            percetPositivos +
+            "<br>"
+        );
+        document.write(
+          "A quantidade de números negativos da lista é " + negativos + "<br>"
+        );
+        document.write(
+          "A porcentagem de números negativos da lista é " +
+            percetNegativos +
+            "<br>"
+        );
+      }
+    </script>
+  </head>
+
+  <body>
+    Números: <input type="text" id="txtNumeros" />
+    <input
+      type="button"
+      value="Informações Aritmética"
+      onclick="infomacoesAritmetica()"
+    />
+  </body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Painel de Temperaturas Semanais</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2>Monitor de Temperaturas Semanais</h2>
+
+    <label for="temperatura">Digite a temperatura (°C):</label><br />
+    <input type="number" id="temperatura" step="0.1" />
+    <button onclick="adicionarTemperatura()">Adicionar Temperatura</button
+    ><br />
+
+    <h3>Temperaturas Inseridas:</h3>
+    <ul id="listaTemperaturas"></ul>
+
+    <button onclick="calcularMedia()">Calcular Média</button>
+
+    <button onclick="calcularMediaMovel()">Calcular Média Móvel</button>
+
+    <div id="resultado"></div>
+
+    <script>
+      const temperaturas = [];
+
+      function adicionarTemperatura() {
+        const input = document.getElementById("temperatura");
+        const valor = parseFloat(input.value);
+
+        if (isNaN(valor)) {
+          alert("Por favor, insira um número válido.");
+          return;
+        }
+
+        temperaturas.push(valor);
+        detectaTendencia();
+
+        const lista = document.getElementById("listaTemperaturas");
+        const item = document.createElement("li");
+        item.textContent = valor + " °C";
+        lista.appendChild(item);
+
+        input.value = "";
+        input.focus();
+      }
+
+      function calcularMedia() {
+        if (temperaturas.length === 0) {
+          alert("Nenhuma temperatura foi inserida.");
+          return;
+        }
+
+        const soma = temperaturas.reduce(
+          (acumulador, numero) => acumulador + numero,
+          0
+        );
+        var media = soma / temperaturas.length;
+
+        let mensagem;
+        if (media > 30) {
+          mensagem = "A semana está quente! 🔥";
+        } else if (media >= 20 && media <= 30) {
+          mensagem = "Temperatura amena. 🌤️";
+        } else {
+          mensagem = "Semana fria! ❄️";
+        }
+
+        const resultado = document.getElementById("resultado");
+        resultado.innerHTML = `
+                         <p>Média das temperaturas: <strong>${media.toFixed(
+                           2
+                         )} °C</strong></p>
+                         <div class="alerta">${mensagem}</div>
+                       `;
+      }
+
+      function calcularMediaMovel() {
+        if (temperaturas.length === 0) {
+          alert("Nenhuma temperatura foi inserida.");
+          return;
+        }
+
+        var indexMoveis = [];
+        for (let i = 2; i < temperaturas.length; i = i + 3) {
+          indexMoveis.push(i);
+        }
+
+        var temperaturasMoveis = temperaturas.filter((value, index) =>
+          indexMoveis.includes(index)
+        );
+
+        const soma = temperaturasMoveis.reduce(
+          (acumulador, numero) => acumulador + numero,
+          0
+        );
+
+        var media = soma / temperaturasMoveis.length;
+
+        let mensagem;
+        if (media > 30) {
+          mensagem = "A média móvel está quente! 🔥";
+        } else if (media >= 20 && media <= 30) {
+          mensagem = "Média móvel amena. 🌤️";
+        } else {
+          mensagem = "Média móvel fria! ❄️";
+        }
+
+        const resultado = document.getElementById("resultado");
+        resultado.innerHTML = `
+                         <p>Média móvel das temperaturas: <strong>${media.toFixed(
+                           2
+                         )} °C</strong></p>
+                         <div class="alerta">${mensagem}</div>
+                       `;
+      }
+
+      function detectaTendencia() {
+        if (temperaturas.length < 7) {
+          return;
+        }
+        var semana = temperaturas.slice(-7);
+
+        var primeiroDia = semana[0];
+        var total = semana.length - 1;
+
+        var diasCrescente = 0;
+        var diasDecrescente = 0;
+
+        var semana = temperaturas.slice(-6);
+
+        for (var dia of semana) {
+          if (dia > primeiroDia) {
+            diasCrescente += 1;
+            primeiroDia = dia;
+          } else {
+            diasDecrescente += 1;
+            primeiroDia = dia;
+          }
+        }
+        console.log(diasCrescente);
+        console.log(total);
+
+        if (diasCrescente == total) {
+          alert("Tendência de temperatura crescente! Cuidado com calor >w<!");
+        } else if (diasDecrescente == total) {
+          alert("Tendência de temperatura decrescente! Agasalhe bem uwu!");
+        } else {
+          alert(
+            "Tendência de temperatura inconsistente! Presta atenção ein ._.!"
+          );
+        }
+      }
+    </script>
+  </body>
+</html>

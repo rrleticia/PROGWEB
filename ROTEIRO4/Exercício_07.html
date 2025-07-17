@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exercício 07</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      function somaMutiplos3() {
+        var numeros = document.getElementById("txtNumeros").value;
+        numeros = numeros.split(",");
+        numeros = numeros.map((num) => parseInt(num));
+        numeros = numeros.filter((num) => num % 3 == 0);
+        somatoria = numeros.reduce((a, b) => a + b, 0);
+        document.write("Soma dos mútiplos de 3: " + somatoria.toString());
+      }
+    </script>
+  </head>
+
+  <body>
+    Números: <input type="text" id="txtNumeros" />
+    <input type="button" value="Soma mútiplos de 3" onclick="somaMutiplos3()" />
+  </body>
+</html>

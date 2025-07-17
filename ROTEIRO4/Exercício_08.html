@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exercício 08</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      function fatorial(n) {
+        if (n < 0) {
+          return "Não existe fatorial de número negativo";
+        }
+        if (n === 0 || n === 1) {
+          return 1;
+        }
+        let resultado = 1;
+        for (let i = 2; i <= n; i++) {
+          resultado *= i;
+        }
+        return resultado;
+      }
+
+      function calcularFatorial() {
+        var numeros = document.getElementById("txtNumeros").value;
+        numeros = numeros.split(",");
+        numeros = numeros.map((num) => parseInt(num));
+        numeros.forEach((num) => {
+          var fatorialNum = fatorial(num);
+          document.write("O fatorial de " + num + " é " + fatorialNum + "<br>");
+        });
+      }
+    </script>
+  </head>
+
+  <body>
+    Números: <input type="text" id="txtNumeros" />
+    <input
+      type="button"
+      value="Calcular fatorial"
+      onclick="calcularFatorial()"
+    />
+  </body>
+</html>

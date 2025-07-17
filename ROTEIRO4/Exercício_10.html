@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exercício 10</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      function inverteLista() {
+        var numeros = document.getElementById("txtNumeros").value;
+        numeros = numeros.split(",");
+        numeros = numeros.map((num) => parseInt(num));
+        numeros = numeros.reverse();
+        document.write("O inverso da lista é: " + numeros.toString());
+      }
+    </script>
+  </head>
+
+  <body>
+    Números: <input type="text" id="txtNumeros" />
+    <input type="button" value="Inverter lista" onclick="inverteLista()" />
+  </body>
+</html>
