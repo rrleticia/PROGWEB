@@ -62,10 +62,12 @@
   background-color: #0056b3;
 }
 
-.ajuste-footer {
+/* Ajuste footer */
+.carrinho__container {
   margin-bottom: 100px;
 }
 
+/* Button */
 .formulario {
   margin: 0 35px 0 35px;
 }

@@ -9,7 +9,7 @@ function adicionaAoCarrinho(nomeProduto, precoProduto) {
 }
 
 function atualizaContagemCarrinho() {
-  document.getElementById("carrinho-contagem").textContent = carrinho.length;
+  document.getElementById("carrinho__contagem").textContent = carrinho.length;
 }
 
 function salvarCarrinho() {
@@ -23,22 +23,24 @@ function carregaCarrinho() {
 }
 
 function mostrarItensCarrinho() {
-  const containerCarrinho = document.getElementById("carrinho-container");
-  const totalCarrinho = document.getElementById("carrinho-total");
+  const containerCarrinho = document.getElementById("carrinho__container");
+  const totalCarrinho = document.getElementById("carrinho__total");
   containerCarrinho.innerHTML = "";
   let total = 0;
 
   carrinho.forEach((produto, indice) => {
     const itemCarrinho = document.createElement("div");
-    itemCarrinho.classList.add("carrinho-item");
+    itemCarrinho.classList.add("carrinho__item");
     const nomeProduto = produto.nome;
     const imgSource =
       String(nomeProduto).charAt(0).toLowerCase() +
       String(nomeProduto).slice(1);
     console.log(imgSource);
     itemCarrinho.innerHTML = `
-            <img src="img/${imgSource}.jpg" alt="${produto.nome}">
-            <div class="carrinho-item-detalhes">
+            <img class="carrinho__item-imagem" src="img/${imgSource}.jpg" alt="${
+      produto.nome
+    }">
+            <div class="carrinho__item-detalhes">
                 <h3>${produto.nome}</h3>
                 <p>${produto.preco.toLocaleString("pt-BR", {
                   style: "currency",

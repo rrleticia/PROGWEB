@@ -19,24 +19,26 @@
         <a class="header__navegacao" href="#">Contato</a>
       </nav>
       <div class="carrinho">
-        <span class="carrinho__total">0</span>
-        <img
-          class="carrinho__imagem"
-          src="img/cart-icon.png"
-          alt="Carrinho de Compras"
-        />
+        <a href="carrinho.html">
+          <span class="carrinho__contagem" id="carrinho__contagem">0</span>
+          <img
+            class="carrinho__imagem"
+            src="img/cart-icon.png"
+            alt="Carrinho de Compras"
+          />
+        </a>
       </div>
     </header>
-    <main class="ajuste-footer">
+    <main class="carrinho__container">
       <section class="carrinho__itens">
         <h2>Seu Carrinho</h2>
         <div id="carrinho__container">
           <!-- Itens do carrinho serão exibidos aqui -->
         </div>
         <div class="carrinho__total">
-          <h3>Total: <span id="carrinho-total">0,00</span></h3>
+          <h3>Total: <span id="carrinho__total">0,00</span></h3>
         </div>
-        <button class="button-limpar" onclick="limpaCarrinho()">
+        <button class="carrinho__limpar-btn" onclick="limpaCarrinho()">
           Limpar Carrinho
         </button>
       </section>
