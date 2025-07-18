@@ -17,7 +17,6 @@
     <ul id="listaTemperaturas"></ul>
 
     <button onclick="calcularMedia()">Calcular Média</button>
-
     <button onclick="calcularMediaMovel()">Calcular Média Móvel</button>
 
     <div id="resultado"></div>
@@ -36,6 +35,7 @@
 
         temperaturas.push(valor);
         detectaTendencia();
+        alertaTemperaturaExtrema();
 
         const lista = document.getElementById("listaTemperaturas");
         const item = document.createElement("li");
@@ -52,11 +52,8 @@
           return;
         }
 
-        const soma = temperaturas.reduce(
-          (acumulador, numero) => acumulador + numero,
-          0
-        );
-        var media = soma / temperaturas.length;
+        const soma = temperaturas.reduce((acum, num) => acum + num, 0);
+        const media = soma / temperaturas.length;
 
         let mensagem;
         if (media > 30) {
@@ -69,11 +66,9 @@
 
         const resultado = document.getElementById("resultado");
         resultado.innerHTML = `
-                         <p>Média das temperaturas: <strong>${media.toFixed(
-                           2
-                         )} °C</strong></p>
-                         <div class="alerta">${mensagem}</div>
-                       `;
+          <p>Média das temperaturas: <strong>${media.toFixed(2)} °C</strong></p>
+          <div class="alerta">${mensagem}</div>
+        `;
       }
 
       function calcularMediaMovel() {
@@ -82,21 +77,17 @@
           return;
         }
 
-        var indexMoveis = [];
-        for (let i = 2; i < temperaturas.length; i = i + 3) {
+        const indexMoveis = [];
+        for (let i = 2; i < temperaturas.length; i += 3) {
           indexMoveis.push(i);
         }
 
-        var temperaturasMoveis = temperaturas.filter((value, index) =>
+        const temperaturasMoveis = temperaturas.filter((_, index) =>
           indexMoveis.includes(index)
         );
 
-        const soma = temperaturasMoveis.reduce(
-          (acumulador, numero) => acumulador + numero,
-          0
-        );
-
-        var media = soma / temperaturasMoveis.length;
+        const soma = temperaturasMoveis.reduce((acum, num) => acum + num, 0);
+        const media = soma / temperaturasMoveis.length;
 
         let mensagem;
         if (media > 30) {
@@ -109,47 +100,76 @@
 
         const resultado = document.getElementById("resultado");
         resultado.innerHTML = `
-                         <p>Média móvel das temperaturas: <strong>${media.toFixed(
-                           2
-                         )} °C</strong></p>
-                         <div class="alerta">${mensagem}</div>
-                       `;
+          <p>Média móvel das temperaturas: <strong>${media.toFixed(
+            2
+          )} °C</strong></p>
+          <div class="alerta">${mensagem}</div>
+        `;
       }
 
       function detectaTendencia() {
         if (temperaturas.length < 7) {
           return;
         }
-        var semana = temperaturas.slice(-7);
 
-        var primeiroDia = semana[0];
-        var total = semana.length - 1;
+        const semana = temperaturas.slice(-7);
+        let primeiroDia = semana[0];
+        const total = semana.length - 1;
 
-        var diasCrescente = 0;
-        var diasDecrescente = 0;
+        let diasCrescente = 0;
+        let diasDecrescente = 0;
 
-        var semana = temperaturas.slice(-6);
-
-        for (var dia of semana) {
-          if (dia > primeiroDia) {
-            diasCrescente += 1;
-            primeiroDia = dia;
-          } else {
-            diasDecrescente += 1;
-            primeiroDia = dia;
+        for (let i = 1; i < semana.length; i++) {
+          if (semana[i] > primeiroDia) {
+            diasCrescente++;
+          } else if (semana[i] < primeiroDia) {
+            diasDecrescente++;
           }
+          primeiroDia = semana[i];
         }
-        console.log(diasCrescente);
-        console.log(total);
 
-        if (diasCrescente == total) {
-          alert("Tendência de temperatura crescente! Cuidado com calor >w<!");
-        } else if (diasDecrescente == total) {
-          alert("Tendência de temperatura decrescente! Agasalhe bem uwu!");
+        if (diasCrescente === total) {
+          alert("Tendência de temperatura crescente! Cuidado com o calor >w<");
+        } else if (diasDecrescente === total) {
+          alert("Tendência de temperatura decrescente! Agasalhe-se bem uwu!");
         } else {
-          alert(
-            "Tendência de temperatura inconsistente! Presta atenção ein ._.!"
-          );
+          alert("Tendência de temperatura instável! Preste atenção ein ._.!");
+        }
+      }
+
+      function alertaTemperaturaExtrema() {
+        if (temperaturas.length < 3) {
+          return;
+        }
+
+        let consecutivosQuentes = 0;
+        let consecutivosFrios = 0;
+
+        for (let temp of temperaturas) {
+          if (temp > 35) {
+            consecutivosQuentes++;
+            consecutivosFrios = 0;
+          } else if (temp < 5) {
+            consecutivosFrios++;
+            consecutivosQuentes = 0;
+          } else {
+            consecutivosQuentes = 0;
+            consecutivosFrios = 0;
+          }
+
+          if (consecutivosQuentes >= 3) {
+            alert(
+              "⚠️ Alerta de calor extremo! 3 dias consecutivos acima de 35°C."
+            );
+            break;
+          }
+
+          if (consecutivosFrios >= 3) {
+            alert(
+              "⚠️ Alerta de frio extremo! 3 dias consecutivos abaixo de 5°C."
+            );
+            break;
+          }
         }
       }
     </script>
