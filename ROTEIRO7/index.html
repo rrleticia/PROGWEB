@@ -1,0 +1,79 @@
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loja de Livros de Ciência da Computação</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <link rel="stylesheet" href="./css/estilo.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Loja de Livros de Ciência da Computação</h1>
+      <div id="carrinho-icon" onclick="toggleCarrinho()">
+        🛒 Carrinho (<span id="carrinho-contador">0</span>)
+      </div>
+    </header>
+
+    <div id="carrinho">
+      <h3>Seu Carrinho</h3>
+      <ul id="itens-carrinho"></ul>
+      <button onclick="esvaziarCarrinho()">Esvaziar</button>
+    </div>
+
+    <main>
+      <h2>Livros em destaque</h2>
+      <div class="book-list">
+        <div class="book">
+          <h3>Estruturas de Dados e Algoritmos</h3>
+          <p>Autor: Mark Allen Weiss</p>
+          <p>Preço: R$ 129,90</p>
+          <button
+            onclick="adicionarCarrinho('Estruturas de Dados e Algoritmos')"
+          >
+            Adicionar ao Carrinho
+          </button>
+        </div>
+        <div class="book">
+          <h3>Clean Code</h3>
+          <p>Autor: Robert C. Martin</p>
+          <p>Preço: R$ 89,90</p>
+          <button onclick="adicionarCarrinho('Clean Code')">
+            Adicionar ao Carrinho
+          </button>
+        </div>
+        <div class="book">
+          <h3>Design Patterns</h3>
+          <p>Autor: Erich Gamma</p>
+          <p>Preço: R$ 109,90</p>
+          <button onclick="adicionarCarrinho('Design Patterns')">
+            Adicionar ao Carrinho
+          </button>
+        </div>
+      </div>
+
+      <h2>Endereço de Entrega</h2>
+      <div class="form-group">
+        <label for="cep">CEP:</label>
+
+        <input type="text" id="cep" placeholder="Digite o CEP" />
+      </div>
+      <div class="form-group">
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" placeholder="Rua, número, bairro" />
+      </div>
+      <button onclick="localizarEndereco()">Localizar no Mapa</button>
+
+      <div id="map"></div>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Loja de Livros de Ciência da Computação</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script type="module" src="./scripts/script.js"></script>
+  </body>
+</html>
