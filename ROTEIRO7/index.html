@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
@@ -7,73 +8,116 @@
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     />
-    <link rel="stylesheet" href="./css/estilo.css" />
+    <link rel="stylesheet" href="../css/estilo.css" />
   </head>
   <body>
-    <header>
+    <header class="header">
       <h1>Loja de Livros de Ciência da Computação</h1>
-      <div id="carrinho-icon" onclick="toggleCarrinho()">
+      <button id="btn-carrinho" class="cart-btn" aria-label="Abrir carrinho">
         🛒 Carrinho (<span id="carrinho-contador">0</span>)
-      </div>
+      </button>
     </header>
 
-    <div id="carrinho">
-      <h3>Seu Carrinho</h3>
-      <ul id="itens-carrinho"></ul>
-      <button onclick="esvaziarCarrinho()">Esvaziar</button>
-    </div>
+    <aside id="carrinho" class="carrinho" aria-hidden="true">
+      <div class="carrinho-header">
+        <h3>Seu Carrinho</h3>
+        <button id="btn-fechar-carrinho" class="btn btn-ghost">Fechar</button>
+      </div>
+      <ul id="itens-carrinho" class="itens-carrinho"></ul>
+      <button id="btn-esvaziar" class="btn btn-danger">Esvaziar</button>
+    </aside>
 
-    <main>
-      <h2>Livros em destaque</h2>
-      <div class="book-list">
-        <div class="book">
-          <h3>Estruturas de Dados e Algoritmos</h3>
-          <p>Autor: Mark Allen Weiss</p>
-          <p>Preço: R$ 129,90</p>
-          <button
-            onclick="adicionarCarrinho('Estruturas de Dados e Algoritmos')"
-          >
-            Adicionar ao Carrinho
+    <main class="container">
+      <section>
+        <h2>Livros em destaque</h2>
+        <div class="book-list">
+          <article class="book">
+            <h3>Estruturas de Dados e Algoritmos</h3>
+            <p>Autor: Mark Allen Weiss</p>
+            <p class="preco">Preço: R$ 129,90</p>
+            <button
+              class="btn btn-primary add"
+              data-title="Estruturas de Dados e Algoritmos"
+            >
+              Adicionar ao Carrinho
+            </button>
+          </article>
+
+          <article class="book">
+            <h3>Clean Code</h3>
+            <p>Autor: Robert C. Martin</p>
+            <p class="preco">Preço: R$ 89,90</p>
+            <button class="btn btn-primary add" data-title="Clean Code">
+              Adicionar ao Carrinho
+            </button>
+          </article>
+
+          <article class="book">
+            <h3>Design Patterns</h3>
+            <p>Autor: Erich Gamma</p>
+            <p class="preco">Preço: R$ 109,90</p>
+            <button class="btn btn-primary add" data-title="Design Patterns">
+              Adicionar ao Carrinho
+            </button>
+          </article>
+        </div>
+      </section>
+
+      <section class="endereco-section">
+        <h2>Endereço de Entrega</h2>
+        <div class="grid-2">
+          <div class="form-group">
+            <label for="cep">CEP</label>
+            <input
+              type="text"
+              id="cep"
+              placeholder="Ex.: 58400-000"
+              inputmode="numeric"
+            />
+          </div>
+          <div class="form-group">
+            <label for="endereco">Endereço</label>
+            <input
+              type="text"
+              id="endereco"
+              placeholder="Rua, número, bairro, cidade - UF"
+            />
+          </div>
+        </div>
+        <div class="actions">
+          <button id="btn-localizar" class="btn btn-primary">
+            Localizar no Mapa
           </button>
         </div>
-        <div class="book">
-          <h3>Clean Code</h3>
-          <p>Autor: Robert C. Martin</p>
-          <p>Preço: R$ 89,90</p>
-          <button onclick="adicionarCarrinho('Clean Code')">
-            Adicionar ao Carrinho
-          </button>
+        <div id="map" class="map"></div>
+      </section>
+
+      <section id="distancia-card" class="card distancia-card" hidden>
+        <h3>Entrega a partir da UFCG</h3>
+        <p class="muted" id="origem-info">Origem: —</p>
+        <p class="muted" id="destino-info">Destino: —</p>
+
+        <div class="metrics">
+          <div class="metric">
+            <span class="metric-label">Distância</span>
+            <span id="km" class="metric-value">— km</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Custo (R$ 1,20/km)</span>
+            <span id="custo" class="metric-value">—</span>
+          </div>
         </div>
-        <div class="book">
-          <h3>Design Patterns</h3>
-          <p>Autor: Erich Gamma</p>
-          <p>Preço: R$ 109,90</p>
-          <button onclick="adicionarCarrinho('Design Patterns')">
-            Adicionar ao Carrinho
-          </button>
-        </div>
-      </div>
-
-      <h2>Endereço de Entrega</h2>
-      <div class="form-group">
-        <label for="cep">CEP:</label>
-
-        <input type="text" id="cep" placeholder="Digite o CEP" />
-      </div>
-      <div class="form-group">
-        <label for="endereco">Endereço:</label>
-        <input type="text" id="endereco" placeholder="Rua, número, bairro" />
-      </div>
-      <button onclick="localizarEndereco()">Localizar no Mapa</button>
-
-      <div id="map"></div>
+        <p class="note">
+          * Distância calculada pela rota de carro (OSRM). Valores estimados.
+        </p>
+      </section>
     </main>
 
-    <footer>
+    <footer class="footer">
       <p>&copy; 2025 Loja de Livros de Ciência da Computação</p>
     </footer>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script type="module" src="./scripts/script.js"></script>
+    <script src="../scripts/script.js" type="module"></script>
   </body>
 </html>
