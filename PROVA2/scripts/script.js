@@ -194,6 +194,13 @@ const alterarValoresTabela = async () => {
   modificaValores(produtos);
 };
 
+const formatarMoeda = (valor) => {
+  return new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(valor);
+};
+
 //Não mexer neste método
 const modificaValores = ([
   produto1,
@@ -207,22 +214,22 @@ const modificaValores = ([
     .getElementById("tabelaProdutos")
     .getElementsByTagName("tbody")[0];
   tabela.rows[0].cells[0].innerText = produto1.title;
-  tabela.rows[0].cells[1].innerText = produto1.price;
+  tabela.rows[0].cells[1].innerText = formatarMoeda(produto1.price);
   tabela.rows[0].cells[2].innerHTML = `<img src="${produto1.image}"/>`;
   tabela.rows[1].cells[0].innerText = produto2.title;
-  tabela.rows[1].cells[1].innerText = produto2.price;
+  tabela.rows[1].cells[1].innerText = formatarMoeda(produto2.price);
   tabela.rows[1].cells[2].innerHTML = `<img src="${produto2.image}"/>`;
   tabela.rows[2].cells[0].innerText = produto3.title;
-  tabela.rows[2].cells[1].innerText = produto3.price;
+  tabela.rows[2].cells[1].innerText = formatarMoeda(produto3.price);
   tabela.rows[2].cells[2].innerHTML = `<img src="${produto3.image}"/>`;
   tabela.rows[3].cells[0].innerText = produto4.title;
-  tabela.rows[3].cells[1].innerText = produto4.price;
+  tabela.rows[3].cells[1].innerText = formatarMoeda(produto4.price);
   tabela.rows[3].cells[2].innerHTML = `<img src="${produto4.image}"/>`;
   tabela.rows[4].cells[0].innerText = produto5.title;
-  tabela.rows[4].cells[1].innerText = produto5.price;
+  tabela.rows[4].cells[1].innerText = formatarMoeda(produto5.price);
   tabela.rows[4].cells[2].innerHTML = `<img src="${produto5.image}"/>`;
   tabela.rows[5].cells[0].innerText = produto6.title;
-  tabela.rows[5].cells[1].innerText = produto6.price;
+  tabela.rows[5].cells[1].innerText = formatarMoeda(produto6.price);
   tabela.rows[5].cells[2].innerHTML = `<img src="${produto6.image}"/>`;
 };
 
