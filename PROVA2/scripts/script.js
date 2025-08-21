@@ -124,14 +124,7 @@ const consultaCep = async () => {
 //Etapa 03
 const gerarTextoMarketeiro = (dadosFormulario) => {
   const card = document.createElement("div");
-  card.style.width = "300px";
-  card.style.border = "1px solid #ccc";
-  card.style.borderRadius = "10px";
-  card.style.padding = "15px";
-  card.style.boxShadow = "2px 2px 10px rgba(0,0,0,0.1)";
-  card.style.margin = "10px auto";
-  card.style.fontFamily = "Arial, sans-serif";
-  card.style.backgroundColor = "#f9f9f9";
+  card.className = "container";
 
   card.innerHTML = `
     <p>Apresentamos ${dadosFormulario.nome}, um profissional altamente qualificado e referência no desenvolvimento avançado de
@@ -153,7 +146,7 @@ const gerarTextoMarketeiro = (dadosFormulario) => {
     transformando o cenário tecnológico com soluções que transcendem expectativas.</p>
   `;
 
-  document.body.appendChild(card);
+  document.getElementById("marketeiro").appendChild(card);
 };
 
 //Não mexer neste método
